@@ -16,25 +16,36 @@
       font-family: Arial, sans-serif;
     }
 
-    a {
+    button {
       padding: 16px 28px;
       background: #000;
       color: #fff;
-      text-decoration: none;
       font-size: 18px;
+      border: none;
       border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <a
-    href="https://www.fanvue.com/itslunarayne"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <button onclick="go()">
     Continue
-  </a>
+  </button>
+
+  <script>
+    function go() {
+      const url = "https://www.fanvue.com/itslunarayne";
+
+      // 1️⃣ обычный переход
+      window.location.href = url;
+
+      // 2️⃣ попытка открыть внешний браузер
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, 300);
+    }
+  </script>
 
 </body>
 </html>
