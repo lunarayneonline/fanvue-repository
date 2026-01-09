@@ -53,7 +53,7 @@
 </head>
 <body>
   <div class="card">
-    <!-- STEP 1 -->
+    <!-- STEP 1: предупреждение -->
     <div id="step1">
       <p>
         This page is opened inside an app.<br><br>
@@ -66,7 +66,7 @@
       <button onclick="checkBrowser()">Continue</button>
     </div>
 
-    <!-- STEP 2 -->
+    <!-- STEP 2: внешний браузер -->
     <div id="step2" class="hidden">
       <p>
         You are now in a proper browser.<br>
@@ -75,7 +75,7 @@
       <button onclick="go()">Continue</button>
     </div>
 
-    <!-- STEP 3: warning if in-app -->
+    <!-- STEP 3: TikTok Safe Browser / in-app -->
     <div id="step3" class="hidden">
       <p>
         You did not open this page in a browser.<br>
@@ -86,22 +86,16 @@
   </div>
 
   <script>
-    function isInAppBrowser() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      // проверяем популярные in-app браузеры
-      if (/FBAN|FBAV|Instagram|TikTok/i.test(ua)) {
-        return true;
-      }
-      return false;
-    }
-
     function checkBrowser() {
-      if (isInAppBrowser()) {
-        // показываем Step 3: warning
+      const hostname = window.location.hostname.toLowerCase();
+
+      // проверяем TikTok Safe Browser
+      if (hostname.includes("tiktoklinksafety.eu")) {
+        // in-app, показываем Step 3
         document.getElementById("step1").classList.add("hidden");
         document.getElementById("step3").classList.remove("hidden");
       } else {
-        // показываем Step 2: сайт открывается в обычном браузере
+        // внешний браузер, Step 2
         document.getElementById("step1").classList.add("hidden");
         document.getElementById("step2").classList.remove("hidden");
       }
@@ -114,6 +108,7 @@
     }
 
     function go() {
+      // переход на сайт в том же окне
       window.location.href = "https://www.fanvue.com/itslunarayne";
     }
   </script>
