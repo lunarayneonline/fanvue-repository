@@ -74,7 +74,7 @@
     <div id="step2" class="hidden">
       <p>
         Once you have opened this page in your browser,<br>
-        tap the button below to continue.
+        tap the button below to continue to the website.
       </p>
 
       <button onclick="go()">Continue</button>
@@ -83,11 +83,14 @@
 
   <script>
     function nextStep() {
+      // скрываем предупреждение
       document.getElementById("step1").classList.add("hidden");
+      // показываем второй шаг
       document.getElementById("step2").classList.remove("hidden");
     }
 
     function go() {
+      // переход на сайт в том же окне
       window.location.href = "https://www.fanvue.com/itslunarayne";
     }
   </script>
